@@ -1,8 +1,13 @@
-__pycache__/
-.env
-*.pyc
-.vscode
-node_modules/
-frontend/dist/
+__pycache__/	# Prevents Python bytecode clutter
+.env		# Protects secrets (like OpenAI key)
+*.pyc		# Ignores compiled Python files
+.vscode		# IDE-specific settings
+node_modules/	# Future-proofing if Node is used
+frontend/dist/	# Skips built assets from Streamlit
 
+# Skips local virtualenv
+venv/
 backend/venv/
+
+# Catches temp/backup files
+*.orig

@@ -1,13 +1,42 @@
 version: '3.8'
 services:
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: smart-tender-backend
+    ports:
+      - "8100:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - DATABASE_URL=${DATABASE_URL}
+      - STORAGE_PATH=${STORAGE_PATH}
+    volumes:
+      - ../backend:/app
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: smart-tender-frontend
+    ports:
+      - "8502:8501"
+    volumes:
+      - ../frontend:/app
+    depends_on:
+      - backend
+
   db:
     image: postgres
     restart: always
+    container_name: tender-db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     ports:
-      - '5432:5432'
+      - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
 
