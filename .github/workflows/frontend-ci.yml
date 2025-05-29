@@ -1,0 +1,34 @@
+name: 💻 Frontend CI
+
+on:
+  push:
+    paths:
+      - "frontend/**"
+  pull_request:
+    paths:
+      - "frontend/**"
+
+jobs:
+  streamlit-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v3
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: 📦 Install dependencies
+        working-directory: ./frontend
+        run: |
+          pip install -r requirements.txt
+
+      - name: 🧪 Run Streamlit in test mode
+        working-directory: ./frontend
+        run: |
+          streamlit run streamlit_app.py --server.headless true &
+          sleep 5
+          pkill streamlit
