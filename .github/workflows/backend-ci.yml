@@ -23,7 +23,7 @@ jobs:
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
     - name: Build Docker image
-      run: docker build -t ghcr.io/m10vir/smart-tender-ai/smart-tender-backend:latest ./backend
+      run: docker build -t ghcr.io/m10vir/smart-tender-backend:latest ./backend
 
     - name: Push Docker image to GHCR
-      run: docker push ghcr.io/m10vir/smart-tender-ai/smart-tender-backend:latest
+      run: docker push ghcr.io/m10vir/smart-tender-backend:latest
