@@ -20,7 +20,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Log in to GitHub Container Registry (GHCR)
-      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u m10vir --password-stdin
 
     - name: Build Docker image
       run: docker build -t ghcr.io/m10vir/smart-tender-backend:latest ./backend
