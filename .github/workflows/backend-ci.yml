@@ -1,42 +1,45 @@
-name: ⚙️ Backend CI
+name: Backend CI
 
 on:
   push:
     paths:
-      - "backend/**"
+      - 'backend/**'
+    branches: [main]
   pull_request:
     paths:
-      - "backend/**"
+      - 'backend/**'
+    branches: [main]
 
 jobs:
-  build:
+  build-backend:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
 
     steps:
-      - name: 📥 Checkout repo
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: 🐍 Setup Python 3.11
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.11
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
 
-      - name: 📦 Install Poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          echo "${HOME}/.local/bin" >> $GITHUB_PATH
+    - name: Install Poetry and dependencies
+      run: |
+        pip install poetry
+        poetry config virtualenvs.create false
+        poetry install --no-root --no-interaction --no-ansi
 
-      - name: 📁 Navigate to backend
-        working-directory: ./backend
-        run: echo "Inside backend directory"
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🧰 Install dependencies with Poetry (no-root)
-        working-directory: ./backend
-        run: |
-          poetry config virtualenvs.create false
-          poetry install --no-root --no-interaction --no-ansi
-
-      - name: ✅ Run Tests (if applicable)
-        working-directory: ./backend
-        run: |
-          echo "No test suite yet – skipping"
+    - name: Build and push Docker image to GHCR
+      run: |
+        docker build -t ghcr.io/${{ github.repository }}/smart-tender-backend:latest .
+        docker push ghcr.io/${{ github.repository }}/smart-tender-backend:latest

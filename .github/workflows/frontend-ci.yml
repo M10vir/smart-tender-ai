@@ -2,12 +2,16 @@ name: Frontend CI
 
 on:
   push:
+    paths:
+      - 'frontend/**'
     branches: [main]
   pull_request:
+    paths:
+      - 'frontend/**'
     branches: [main]
 
 jobs:
-  frontend-ci:
+  build-frontend:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -27,6 +31,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run Streamlit health check
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build and push Docker image to GHCR
       run: |
-        python -c "import streamlit, requests"
+        docker build -t ghcr.io/${{ github.repository }}/smart-tender-frontend:latest .
+        docker push ghcr.io/${{ github.repository }}/smart-tender-frontend:latest

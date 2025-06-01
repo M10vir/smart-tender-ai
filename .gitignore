@@ -4,6 +4,7 @@ __pycache__/
 # Protects secrets (like OpenAI key)
 .env
 .env.*
+.env-safe
  
 # Ignores compiled Python files
 *.pyc 
