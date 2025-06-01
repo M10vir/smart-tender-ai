@@ -2,44 +2,28 @@ name: Backend CI
 
 on:
   push:
+    branches: [main]
     paths:
       - 'backend/**'
-    branches: [main]
+      - '.github/workflows/backend-ci.yml'
   pull_request:
+    branches: [main]
     paths:
       - 'backend/**'
-    branches: [main]
 
 jobs:
-  build-backend:
+  build-and-publish-backend:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: backend
 
     steps:
-    - name: Checkout code
+    - name: Checkout source
       uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
+    - name: Log in to GitHub Container Registry (GHCR)
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-    - name: Install Poetry and dependencies
-      run: |
-        pip install poetry
-        poetry config virtualenvs.create false
-        poetry install --no-root --no-interaction --no-ansi
+    - name: Build Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/smart-tender-backend:latest ./backend
 
-    - name: Log in to GitHub Container Registry
-      uses: docker/login-action@v3
-      with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Build and push Docker image to GHCR
-      run: |
-        docker build -t ghcr.io/${{ github.repository }}/smart-tender-backend:latest .
-        docker push ghcr.io/${{ github.repository }}/smart-tender-backend:latest
+    - name: Push Docker image to GHCR
+      run: docker push ghcr.io/${{ github.repository }}/smart-tender-backend:latest
