@@ -6,14 +6,14 @@ Smart Tender AI is a full-stack, containerized application designed to automate 
 
 ## 🧰 Built With
 
-![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python) | Python 3.11 |
-![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?logo=fastapi) | Backend Framework |
-![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-FF4B4B?logo=streamlit) | Frontend Framework |
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791?logo=postgresql) | Database |
-![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker) | Containerization |
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI/CD-2088FF?logo=githubactions) | CI/CD |
-![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4-AI-412991?logo=openai) | AI Generation |
-![GHCR](https://img.shields.io/badge/GitHub_Container_Registry-GHCR-0D1117?logo=github) | Registry |
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?logo=fastapi)
+![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-FF4B4B?logo=streamlit)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791?logo=postgresql)
+![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI/CD-2088FF?logo=githubactions)
+![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4-AI-412991?logo=openai)
+![GHCR](https://img.shields.io/badge/GitHub_Container_Registry-GHCR-0D1117?logo=github)
 
 
 ![Backend CI](https://github.com/M10vir/smart-tender-ai/actions/workflows/backend-ci.yml/badge.svg)
