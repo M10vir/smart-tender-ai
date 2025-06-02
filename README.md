@@ -12,7 +12,7 @@ Smart Tender AI is a full-stack, containerized application designed to automate 
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791?logo=postgresql)
 ![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI/CD-2088FF?logo=githubactions)
-![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4-AI-412991?logo=openai)
+![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4-blue)
 ![GHCR](https://img.shields.io/badge/GitHub_Container_Registry-GHCR-0D1117?logo=github)
 
 
