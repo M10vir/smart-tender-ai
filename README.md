@@ -111,4 +111,4 @@ Make sure `.env`, `.env-safe`, and other credentials are excluded and handled se
 
 ## 📘 License
 
-MIT License. Built with ❤️ by [M10vir](https://github.com/M10vir)
+MIT License. Built 💻 by [M10vir](https://github.com/M10vir)
