@@ -18,6 +18,7 @@ Smart Tender AI is a full-stack, containerized application designed to automate 
 
 ![Backend CI](https://github.com/M10vir/smart-tender-ai/actions/workflows/backend-ci.yml/badge.svg)
 ![Frontend CI](https://github.com/M10vir/smart-tender-ai/actions/workflows/frontend-ci.yml/badge.svg)
+[![GHCR Backend](https://img.shields.io/badge/GHCR-smart--tender--backend-blue?logo=docker)](https://github.com/users/M10vir/packages/container/package/smart-tender-backend)
 ![GHCR Backend Image](https://ghcr-badge.dev/M10vir/smart-tender-ai/smart-tender-backend/latest)
 ![GHCR Frontend Image](https://ghcr-badge.dev/M10vir/smart-tender-ai/smart-tender-frontend/latest)
 
